@@ -1,0 +1,10 @@
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <%= f.text_field :username %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.email_field :email %>
+  <%= password_field(:users, :password) %>
+  <%= password_field(:users, :password_confirmation) %>
+  
+  <%= f.submit "Create" %>
+<% end %>
