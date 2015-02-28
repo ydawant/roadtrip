@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'session/login'
+  get 'session/new'
   post 'session/login'
   get 'users/signup'
   get 'welcome/index'

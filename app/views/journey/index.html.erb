@@ -1,1 +1,48 @@
-index.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClJmJ1wK6rcKq6m8dJ06E-dg0ASBF1l0Q">
+    </script>
+    <script type="text/javascript">
+      var geocoder;
+      var map;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(-34.397, 150.644);
+        var mapOptions = {
+        zoom: 8,
+        center: latlng
+      }
+      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    }
+
+    function codeAddress() {
+      var address = document.getElementById("address").value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          })
+          var theDiv = document.getElementById('testing');
+          var content = document.createTextNode("Testing");
+            theDiv.appendChild(content);;
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+    </script>
+
+    <body onload="initialize()">
+    <div id="map-canvas" style="width: 320px; height: 480px;"></div>
+      <div>
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input type="button" value="Encode" onclick="codeAddress()">
+      </div>
+      <div id="testing"></div>
+    </body>
+  </head>
+</html>
