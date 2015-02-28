@@ -1,0 +1,7 @@
+  <h4>log in</h4>
+
+  <%= form_tag session_login_path do %>
+    <%= text_field_tag    :username,    nil, :placeholder => "Username", :autofocus => true %>
+    <%= password_field_tag :password, nil, :placeholder => "Password" %>
+    <%= button_tag "Sign In" %>
+  <% end %>
